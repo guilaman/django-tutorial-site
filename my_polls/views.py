@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 
 from .models import Question
 
 
 def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    latest_question_list = get_list_or_404(
+            Question.objects.order_by("-pub_date")[:5])
+    # latest_question_list = Question.objects.order_by("-pub_date")[:5]
     context = {
         "latest_question_list": latest_question_list,
         }
@@ -21,8 +23,10 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    return render(request, "my_polls/results.html")
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, "my_polls/results.html", {"question": question})
 
 
 def vote(request, question_id):
-    return render(request, "my_polls/vote.html")
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, "my_polls/vote.html", {"question": question})
