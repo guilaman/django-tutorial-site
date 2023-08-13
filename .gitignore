@@ -1,5 +1,6 @@
 # Ignore files with API keys
 .env
+#
 *package*
 node_modules
-*/__pycache__
+*__pycache__*
