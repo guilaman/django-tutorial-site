@@ -2,3 +2,4 @@
 .env
 *package*
 node_modules
+*/__pycache__
