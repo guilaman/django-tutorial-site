@@ -1,0 +1,8 @@
+li a {
+  color: yellow;
+}
+
+body {
+  background-color: lightgrey;
+  background: darkgrey url("images/grey_planck.jpg") no-repeat;
+}
